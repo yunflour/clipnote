@@ -1,0 +1,26 @@
+# Render Blueprint — 一键创建 Web Service + PostgreSQL
+# 用法：把整个项目推到 GitHub，然后在 Render Dashboard 选择 "New → Blueprint"
+services:
+  - type: web
+    name: clipnote
+    runtime: node
+    plan: free
+    region: singapore          # 可选: oregon / ohio / frankfurt
+    buildCommand: npm install
+    startCommand: node server.js
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+      - key: DATABASE_URL
+        fromDatabase:
+          name: clipnote-db
+          property: connectionString
+      - key: ACCESS_CODE        # 部署时 Render 会提示你填写访问码
+        sync: false
+
+databases:
+  - name: clipnote-db
+    plan: free
+    databaseName: clipnote
+    user: clipnote

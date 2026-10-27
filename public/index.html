@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#4f6ef7">
+<title>云剪切板 · 笔记本</title>
+<link rel="icon" href="data:,">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <div class="brand">📋 云剪切板</div>
+  <nav class="tabs">
+    <button id="tabClip" class="tab active">剪切板</button>
+    <button id="tabNote" class="tab">笔记本</button>
+  </nav>
+  <div class="header-right">
+    <input id="deviceName" class="device-input" title="设备名（用于标记内容来源，可修改）">
+    <button id="refreshBtn" class="icon-btn" title="手动刷新">⟳</button>
+  </div>
+</header>
+
+<div class="toolbar">
+  <input id="searchBox" class="search" placeholder="搜索剪切板…">
+  <span id="syncStatus" class="sync-status">连接中…</span>
+</div>
+
+<main>
+  <section id="clipView">
+    <div class="composer">
+      <textarea id="clipInput" placeholder="粘贴或输入要同步到云端的内容，Ctrl/⌘ + Enter 发送"></textarea>
+      <button id="sendClip" class="primary">发送</button>
+    </div>
+    <div id="clipList" class="clip-list"></div>
+  </section>
+
+  <section id="noteView" class="hidden">
+    <div class="note-layout">
+      <aside id="noteList" class="note-list"></aside>
+      <div class="note-editor">
+        <input id="noteTitle" class="note-title" placeholder="标题">
+        <textarea id="noteContent" class="note-content" placeholder="选择左侧笔记，或新建一条开始书写…"></textarea>
+        <div class="note-status">
+          <span id="noteSaveStatus"></span>
+          <button id="newNote" class="ghost">+ 新建笔记</button>
+          <button id="delNote" class="ghost danger">删除</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div id="loginOverlay" class="overlay hidden">
+  <div class="login-card">
+    <h2>🔒 访问验证</h2>
+    <p>输入访问码进入（由服务端环境变量 ACCESS_CODE 设定）</p>
+    <input id="loginCode" type="password" placeholder="访问码" autocomplete="current-password">
+    <button id="loginBtn" class="primary">进入</button>
+    <p id="loginErr" class="err"></p>
+  </div>
+</div>
+
+<div id="toast" class="toast"></div>
+<script src="app.js"></script>
+</body>
+</html>

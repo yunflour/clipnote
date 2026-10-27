@@ -1,0 +1,8 @@
+{
+  "name": "云剪切板 · 笔记本",
+  "short_name": "云剪贴板",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f4f6fb",
+  "theme_color": "#4f6ef7"
+}
