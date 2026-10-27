@@ -22,5 +22,6 @@ services:
 databases:
   - name: clipnote-db
     plan: free
+    region: singapore        # 必须与 web 服务同区域，内网连接串才能解析
     databaseName: clipnote
     user: clipnote
